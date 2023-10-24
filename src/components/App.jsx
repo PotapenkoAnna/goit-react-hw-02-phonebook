@@ -21,7 +21,7 @@ export class App extends Component {
 
   handleSubmit = ({ name, number }) => {
     const id = nanoid();
-    if (this.state.contacts.findIndex(contact => name === contact.name) !== -1) {
+    if (this.state.contacts.some(contact => name.toLowerCase() === contact.name.toLowerCase())) {   
       alert(`${name} is already in contacts.`);
     } else {
       this.setState(prev => ({ contacts: [...prev.contacts, { name, number, id }] }));
